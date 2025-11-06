@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About — Wild Vision</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+      /* Keep text color and typography but remove gradient background */
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: #f5f5f5;
+      }
+
+      /* Hero Section */
+      .about-hero {
+        background: url('{{ url_for("static", filename="img/eye.jpg") }}') center/cover no-repeat;
+        position: relative;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        border-radius: 0;
+      }
+      .about-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 20, 20, 0.7);
+      }
+      .about-hero h1 {
+        position: relative;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #00ffcc;
+        text-shadow: 0 0 15px rgba(0,255,200,0.6);
+      }
+      .about-hero p {
+        position: relative;
+        font-size: 1.2rem;
+        color: #d4fdfb;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .card {
+        border: none;
+        border-radius: 15px;
+        background: rgba(10, 20, 20, 0.8);
+        color: #e9f5ff;
+        box-shadow: 0 0 15px rgba(0,255,200,0.15);
+        transition: all 0.3s ease;
+      }
+      .card:hover {
+        box-shadow: 0 0 25px rgba(0,255,200,0.35);
+        transform: translateY(-4px);
+      }
+
+      .text-highlight {
+        color: #00e6ac;
+      }
+
+      footer {
+        background: rgba(0, 20, 20, 0.85);
+        padding: 15px 0;
+        color: #b5b5b5;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar (from reusable file) -->
+    {% include 'navbar.html' %}
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div>
+        <h1>About Wild Vision</h1>
+        <p>AI-Powered Wildlife Detection for a Safer and Smarter Future</p>
+      </div>
+    </section>
+
+    <!-- About Content -->
+    <div class="container section">
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="card p-4">
+            <h3 class="text-highlight">Our Mission</h3>
+            <p>
+              <strong>Wild Vision</strong> is designed to revolutionize wildlife protection by using
+              advanced AI vision systems to detect and alert human settlements of wild animal intrusions.
+              Our goal is to minimize human–animal conflicts, prevent crop damage, and safeguard lives
+              through real-time detection and instant alerting mechanisms.
+            </p>
+
+            <h4 class="text-highlight mt-4">Core Objectives</h4>
+            <ul>
+              <li>Develop a robust AI model capable of recognizing multiple wild species in real environments.</li>
+              <li>Enable real-time monitoring through video surveillance and live detection.</li>
+              <li>Provide instant SMS alerts and siren notifications for early warnings.</li>
+              <li>Integrate seamlessly with low-cost edge devices like Raspberry Pi or Jetson Nano.</li>
+            </ul>
+
+            <h4 class="text-highlight mt-4">Technology Stack</h4>
+            <ul>
+              <li><strong>Frontend:</strong> HTML, CSS (Bootstrap 5)</li>
+              <li><strong>Backend:</strong> Flask (Python)</li>
+              <li><strong>AI Model:</strong> YOLOv11 (Ultralytics)</li>
+              <li><strong>Alert System:</strong> Twilio API & Siren Sound Module</li>
+              <li><strong>Deployment:</strong> Edge Devices / Cloud</li>
+            </ul>
+
+            <h4 class="text-highlight mt-4">Future Enhancements</h4>
+            <p>
+              Future developments include integrating drone-based live tracking, GPS-based animal movement mapping,
+              mobile app alerts, and cloud-enabled data analytics for wildlife behavior prediction.
+              Wild Vision envisions a smarter and safer coexistence between humans and nature.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="card p-4">
+            <h5 class="text-highlight">Project Team</h5>
+            <ul class="list-unstyled mb-0">
+              <li><strong>Team Members:</strong> Lokeshwaran P, Sutharsan N, Avinash Karan K</li>
+              <li><strong>Department:</strong> AI & Data Science</li>
+              <li><strong>Institution:</strong> S.A. Engineering College</li>
+            </ul>
+          </div>
+
+          <div class="card p-4 mt-3">
+            <h5 class="text-highlight">Project Guide</h5>
+            <p><strong>Mentor:</strong> Mr. Naveen Kumar P</p>
+            <p>Department of Artificial Intelligence and Data Science</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <small>© 2025 Wild Vision | Powered by YOLOv11 • Flask • Twilio</small>
+    </footer>
+  </body>
+</html>

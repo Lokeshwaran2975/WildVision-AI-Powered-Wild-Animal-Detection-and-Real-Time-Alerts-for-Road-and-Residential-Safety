@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wild Vision — Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+      /* Use the same global background as other pages */
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: url('{{ url_for("static", filename="img/wildvision_bg.png") }}') no-repeat center center fixed;
+        background-size: cover;
+        color: #eaf8f5;
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+
+      /* Dark overlay for readability */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+        z-index: -1;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.85) !important;
+        padding: 15px 0;
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 255, 180, 0.25);
+      }
+      .navbar-brand img {
+        height: 45px;
+        margin-right: 10px;
+      }
+      .navbar-brand {
+        font-weight: 600;
+        color: #00e6ac !important;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        background: url('{{ url_for("static", filename="img/eye.jpg") }}') no-repeat center center;
+        background-size: cover;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        color: white;
+      }
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 20, 20, 0.6);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        margin-left: 8%;
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #00fff0;
+        text-shadow: 0 0 20px rgba(0, 255, 220, 0.5);
+      }
+      .hero p {
+        font-size: 1.1rem;
+        color: #d4fdfb;
+        margin-top: 10px;
+      }
+      .hero .btn-primary {
+        background: linear-gradient(45deg, #00b894, #00cec9);
+        border: none;
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 255, 200, 0.3);
+      }
+      .hero .btn-primary:hover {
+        transform: scale(1.05);
+        background: linear-gradient(45deg, #00cec9, #00b894);
+      }
+
+      /* Info Cards */
+      .section {
+        padding: 60px 0;
+      }
+      .card {
+        border: none;
+        border-radius: 15px;
+        background: rgba(20, 20, 20, 0.8);
+        color: #eaf8f5;
+        box-shadow: 0 0 20px rgba(0, 255, 200, 0.15);
+        transition: 0.3s;
+        backdrop-filter: blur(6px);
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 25px rgba(0, 255, 200, 0.35);
+      }
+      .text-info {
+        color: #00e6ac !important;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(0, 0, 0, 0.85);
+        color: #b5b5b5;
+        text-align: center;
+        padding: 15px 0;
+        border-top: 1px solid rgba(0, 255, 200, 0.25);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Wild Vision</h1>
+        <p>AI Powered Wild Animal Detection & Real-Time Alert System<br>
+        Enhancing Safety, Preventing Wildlife-Human Conflict.</p>
+        <a href="{{ url_for('upload') }}" class="btn btn-primary">Start Detection</a>
+      </div>
+    </section>
+
+    <!-- Project Info Section -->
+    <div class="container section">
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="card p-4">
+            <h3 class="text-info">Project Abstract</h3>
+            <p>{{ abstract }}</p>
+            <h5 class="text-info mt-3">Scope & Motivation</h5>
+            <p>{{ scope }}</p>
+            <h5 class="text-info mt-3">Problem Statement</h5>
+            <p>{{ problem }}</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card p-4 mb-3">
+            <h5 class="text-info">Project Info</h5>
+            <p><strong>Title:</strong> Wild Vision – AI Powered Wild Animal Detection</p>
+            <p><strong>Course / Dept:</strong> AI & Data Science</p>
+            <small class="text-muted">S.A. Engineering College</small>
+          </div>
+
+          <div class="card p-4">
+            <h5 class="text-info">Recent Animal Intrusions</h5>
+            <ul class="list-unstyled">
+              {% for n in news %}
+              <li class="mb-3">
+                <strong>{{ n.title }}</strong><br>
+                <small class="text-muted">{{ n.date }}</small><br>
+                <span class="small">{{ n.summary }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <small>Powered by YOLOv11 • Twilio • Wild Vision</small>
+    </footer>
+  </body>
+</html>

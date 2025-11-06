@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Detection — Wild Vision</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+      /* Remove gradient so global background image shows */
+      body {
+        color: #e9f5ff;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      h2.glow-text {
+        color: #00ffe0;
+        text-shadow: 0 0 15px rgba(0,255,220,0.6);
+        font-weight: 700;
+      }
+
+      .card {
+        border: none;
+        border-radius: 15px;
+        background: rgba(10, 20, 20, 0.8);
+        box-shadow: 0 0 15px rgba(0,255,200,0.15);
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 0 25px rgba(0,255,200,0.35);
+        transform: translateY(-3px);
+      }
+
+      footer {
+        background: rgba(0, 20, 20, 0.8);
+        color: #b5b5b5;
+        padding: 10px 0;
+        border-top: 1px solid rgba(0,255,200,0.2);
+      }
+
+      .btn-outline-danger {
+        border-color: #ff5c5c;
+        color: #ff5c5c;
+      }
+
+      .btn-outline-danger:hover {
+        background-color: #ff5c5c;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar Include -->
+    {% include 'navbar.html' %}
+
+    <!-- Main Section -->
+    <div class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="glow-text">📡 Live Animal Detection</h2>
+        <a href="{{ url_for('stop_live') }}" class="btn btn-outline-danger btn-sm">⏹ Stop Live</a>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Live Video Feed -->
+        <div class="col-lg-8">
+          <div class="card shadow-lg">
+            <div class="card-body text-center">
+              <h5 class="card-title text-info mb-3">Real-Time Camera Feed</h5>
+              <div class="ratio ratio-16x9">
+                <img id="live-feed" src="{{ url_for('video_feed') }}" class="img-fluid rounded shadow" alt="Live feed">
+              </div>
+              <p class="text-muted mt-3 small">
+                If the camera doesn’t start, ensure your device has webcam access and OpenCV can access device 0.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Alert Information -->
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title text-info">Live Alerts</h5>
+              <p class="small text-muted mb-1">
+                Continuous detections trigger an audible siren and SMS notification to the registered number.
+              </p>
+              <p class="small mb-1"><strong>Receiver:</strong> {{ FARM_OWNER_NUMBER }}</p>
+              <p class="small mb-1"><strong>Model:</strong> YOLOv11 – Wild Vision AI</p>
+              <p class="small"><strong>Confidence Threshold:</strong> {{ CONF_THRESH if CONF_THRESH else '0.35' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-5 text-center text-muted small">
+        <p>Powered by <span class="text-info">YOLOv11</span> • <span class="text-success">OpenCV</span> • <span class="text-warning">Twilio</span> • <span class="text-info">Wild Vision</span></p>
+      </footer>
+    </div>
+
+    <!-- Auto-stop Script (after 60 seconds) -->
+    <script>
+      setTimeout(() => {
+        alert("⏹️ Detection session ended automatically after 60 seconds.");
+        window.location.href = "{{ url_for('stop_live') }}";
+      }, 60000);
+    </script>
+
+  </body>
+</html>

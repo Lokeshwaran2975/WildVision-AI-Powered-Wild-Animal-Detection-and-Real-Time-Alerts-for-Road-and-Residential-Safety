@@ -1,0 +1,188 @@
+/* ---------- Global Reset ---------- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('../img/tiger.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #eaf8f5;
+  overflow-x: hidden;
+}
+
+/* Overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 180, 0.25);
+}
+
+.navbar-brand img {
+  height: 42px;
+  margin-right: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 180, 0.3);
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero-section img {
+  width: 100%;
+  height: 300px; /* reduced from 450px for better fit */
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(0.75);
+  box-shadow: 0 0 25px rgba(0, 255, 180, 0.25);
+}
+
+/* Hero Text Overlay */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 255, 180, 0.4);
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 15px 25px; /* reduced padding for cleaner look */
+  border-radius: 15px;
+}
+
+.hero-text h1 {
+  font-size: 2.4rem; /* reduced from 3rem */
+  font-weight: 700;
+  background: linear-gradient(90deg, #00e6ac, #00fff7, #00b894);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowShift 6s linear infinite;
+}
+
+.hero-text p {
+  font-size: 1rem;
+  color: #d0fdfd;
+  text-shadow: 0 0 8px rgba(0, 255, 180, 0.3);
+}
+
+@keyframes glowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: rgba(18, 26, 26, 0.8);
+  border: none;
+  border-radius: 15px;
+  color: #eaf8f5;
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.15);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 255, 180, 0.35);
+}
+
+/* ---------- Text Styles ---------- */
+.card-title,
+.text-info {
+  color: #00e6ac !important;
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  background: linear-gradient(90deg, #00b894, #00cec9);
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 255, 180, 0.3);
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #00cec9, #00b894);
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.6);
+  transform: scale(1.05);
+}
+
+.btn-outline-success {
+  border: 2px solid #00e6ac;
+  color: #00e6ac;
+  transition: 0.3s;
+}
+
+.btn-outline-success:hover {
+  background-color: #00e6ac;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.5);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 40px;
+  padding: 10px 0;
+  color: #9ae5d9;
+  text-shadow: 0 0 5px rgba(0, 255, 180, 0.5);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---------- Animations ---------- */
+.fade-in {
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 768px) {
+  .hero-section img {
+    height: 220px; /* smaller banner for tablets */
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section img {
+    height: 180px; /* compact hero for phones */
+  }
+
+  .hero-text {
+    padding: 10px 15px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+}

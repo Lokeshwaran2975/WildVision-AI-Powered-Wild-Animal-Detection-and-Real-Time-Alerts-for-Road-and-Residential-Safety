@@ -1,0 +1,33 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 py-3 shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='img/tiger.jpg') }}" 
+           alt="Wild Vision Logo" 
+           height="40" class="me-2">
+      Wild Vision
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center gap-3">
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'index' %}active text-info{% endif %}" href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'upload' %}active text-info{% endif %}" href="{{ url_for('upload') }}">Detection (Video)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'live' %}active text-info{% endif %}" href="{{ url_for('live') }}">Live</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'about' %}active text-info{% endif %}" href="{{ url_for('about') }}">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

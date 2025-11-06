@@ -1,0 +1,7 @@
+Flask==2.3.2
+opencv-python-headless==4.8.1.78
+imutils==0.5.4
+ultralytics==8.1.46
+twilio==7.17.0
+playsound==1.2.2
+numpy==1.26.0

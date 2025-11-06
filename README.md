@@ -1,0 +1,2 @@
+# WildVision-AI-Powered-Wild-Animal-Detection-and-Real-Time-Alerts-for-Road-and-Residential-Safety
+WildVision is an AI-powered real-time wild animal detection and alert system using YOLOv11 and computer vision. It identifies animals like elephants and tigers from CCTV or IR feeds, triggering sirens and mobile alerts to prevent road accidents, reduce human–wildlife conflicts, and support smart city safety initiatives.

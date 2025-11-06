@@ -21,10 +21,10 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 SIREN_PATH = str(BASE_DIR / "static" / "siren" / "Siren.wav")
 TWILIO_ACCOUNT_SID = "xxxxxxxxxxxxxxxxxxxxxx"
 TWILIO_AUTH_TOKEN = "yyyyyyyyyyyyyyyyyyyyyyy"
-TWILIO_PHONE_NUMBER = "+12xxxxxxxx"
-FARM_OWNER_NUMBER = "+91xxxxxxxxxxxx"
+TWILIO_PHONE_NUMBER = "xxxxxxxxxx"
+FARM_OWNER_NUMBER = "xxxxxxxxxxxxxx"
 
-MODEL_PATH = r"D:\ANIMAL-DETECTION-main\ANIMAL-DETECTION-main\runs\detect\train5\weights\best.pt"
+MODEL_PATH = r"\ANIMAL-DETECTION-main\ANIMAL-DETECTION-main\runs\detect\train5\weights\best.pt"
 CONF_THRESH = 0.35
 
 app = Flask(__name__)
@@ -306,3 +306,4 @@ def uploaded_file(filename):
 # ===============================================================
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+
